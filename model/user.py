@@ -2,9 +2,10 @@ from sqlalchemy import Column, Integer, String, DateTime, Boolean
 from sqlalchemy.orm import relationship
 from .associations import user_role_link
 
-from .base import Base
+#from .base import Base
+from .base import db
 
-class User(Base):
+class User(db.Model):
     __tablename__ = 'user'
 
     user_id = Column(Integer, primary_key=True, autoincrement=True)

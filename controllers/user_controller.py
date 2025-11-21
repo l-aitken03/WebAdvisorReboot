@@ -1,14 +1,17 @@
 from flask import Flask, request, jsonify, make_response
-from flask_sqlalchemy import SQLAlchemy
 # from os import environ
+from model.base import db
 from model.user import User
+from model.role import Role
 
 app = Flask(__name__)
 # Configure the database (using SQLite here, modify the URI for PostgreSQL, MySQL, etc.)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../webadvisor.sqllite'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../webadvisor.sqllite'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/trevor-hartman/PycharmProjects/WebAdvisor/webadvisor.sqllite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
+# Initialize the db instance with the Flask app
+db.init_app(app)
 
 # Create the database tables within the application context
 def create_tables():
@@ -66,5 +69,7 @@ def delete_user(user_id):
     return make_response(jsonify({'message': 'user deleted'}), 200)
 
 if __name__ == '__main__':
-    create_tables() # Ensure tables are created before running the app
+    with app.app_context():
+        db.create_all()
+
     app.run(debug=True)
