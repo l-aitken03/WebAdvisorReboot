@@ -1,6 +1,5 @@
 # WebAdvisor Reboot
-An experiemental remake of Ellucian WebAdvisor. 
-Built by college students who have barely a clue what they're doing.
+An experimental remake of Ellucian WebAdvisor in Python utilizing Flask, SQLAlchemy, SQLite, and MySQL.
 
 ### Sprint 1: 08/30 - 09/16
 - No Development
