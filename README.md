@@ -16,6 +16,7 @@ An experimental remake of Ellucian WebAdvisor in Python utilizing Flask, SQLAlch
 - Project rebased on Python utilizing Flask, SQLAlchemy, and SQLite.
 - Started writing CRUD controllers and User Stories.
 
-### Sprint 5: 11/22 - 12/13
-- *Project pushed to production.*
-- *Project database rebased on MySQL.*
+### Upcoming Development Focus for Sprint 5: 11/22 - 12/13
+- Create Flask/SQLAlchemy models and controllers for all tables in the database.
+- Implement Role Based Access Control and test with dummy data.
+- Create proper website flows and GUI.
