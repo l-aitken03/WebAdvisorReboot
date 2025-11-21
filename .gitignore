@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.venv/
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyCharm
+.idea/
+
+# General
+.cache
+.coverage
+.hypothesis/
+.tox/
+target/
+pip-log.txt
+pip-delete-this-directory.txt
+htmlcov/
+nosetests.xml
+coverage.xml
+*,cover
+*.mo
+*.pot
+*.log
+local_settings.py
+instance/
+.webassets-cache
+.scrapy
+docs/_build/
+.ipynb_checkpoints
+.python-version
+celerybeat-schedule
+.env
