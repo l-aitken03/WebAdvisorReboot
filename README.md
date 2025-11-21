@@ -15,7 +15,7 @@ Built by college students who have barely a clue what they're doing.
 ### Sprint 4: 11/01 - 11/18
 - Java repository abandoned due to internal conflict.
 - Project rebased on Python utilizing Flask, SQLAlchemy, and SQLite.
-- Started writing CRUD controllers.
+- Started writing CRUD controllers and User Stories.
 
 ### Sprint 5: 11/22 - 12/13
 - *Project pushed to production.*
