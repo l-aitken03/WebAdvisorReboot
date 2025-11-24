@@ -4,7 +4,7 @@ from model.user import User
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../../SQLite_DB.sqlite'
-# app.config['SQLALCHEMY DATABASE_URI'] = 'mysql+pymysql://root: [PASSWORD_REDACTED] @127.0.0.1:3306
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Redwo0d$@127.0.0.1:3306/webadvisor_reboot'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize the db instance with the Flask app
@@ -69,3 +69,4 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
+    create_user(User('thartman404','Trevor','Hartman','thartman@redwoods.edu',True,False))

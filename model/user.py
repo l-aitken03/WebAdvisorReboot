@@ -1,5 +1,5 @@
-from sqlalchemy import Column, Integer, String, Boolean, and_
-from sqlalchemy.orm import relationship, foreign
+from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy.orm import relationship
 from model.base import db
 from model.associations import user_role_link, course_user_link
 
@@ -15,7 +15,7 @@ class User(db.Model):
     is_student = Column(Boolean, nullable=False)
 
     roles = relationship('Role', secondary=user_role_link, back_populates='users')
-    courses = relationship('Course', secondary=course_user_link, back_populates='courses')
+    courses = relationship('Course', secondary=course_user_link, back_populates='users')
     # extra arguments had to be defined because the Course table is uniquely difficult in that
         # it has a composite primary key and multiple linking foreign keys.
     # the course model has more documentation btw

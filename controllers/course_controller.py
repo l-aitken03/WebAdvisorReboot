@@ -4,7 +4,7 @@ from model.course import Course
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../../SQLite_DB.sqlite'
-# app.config['SQLALCHEMY DATABASE_URI'] = 'mysql+pymysql://root: [PASSWORD_REDACTED] @127.0.0.1:3306
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Redwo0d$@127.0.0.1:3306/webadvisor_reboot'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
@@ -47,7 +47,7 @@ def get_course(class_id):
     return make_response(jsonify({'course': course.json()}), 200)
 
 # Update a course by ID (PUT/PATCH)
-@app.route('/users/<int:class_id>', methods=['PUT'])
+@app.route('/courses/<int:class_id>', methods=['PUT'])
 def update_course(class_id):
     course = Course.query.get_or_404(class_id)
     data = request.get_json()
@@ -66,7 +66,7 @@ def update_course(class_id):
     return make_response(jsonify({'message': 'course updated', 'course': course.json()}), 200)
 
 # Delete a course by ID (DELETE)
-@app.route('/course/<int:class_id>', methods=['DELETE'])
+@app.route('/courses/<int:class_id>', methods=['DELETE'])
 def delete_course(class_id):
     course = Course.query.get_or_404(class_id)
     db.session.delete(course)
