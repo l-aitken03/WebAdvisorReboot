@@ -1,13 +1,11 @@
 # Documentation of Database Elements
 
 ## Courses:
-*Courses* can be assigned to multiple users, with their participation being dependent on their **role** (determined through linking tables). *Courses* have sections that represent individual offerings of various courses, e.g. two sections meeting at the same time but with two different professors, in person and online sections of the same course, etc. Most of the columns are self-explanatory, but I will note that the `enroll_status` column is meant to hold values of `OPEN`, `WAITLISTED`, or `CLOSED` to indicate whether students viewing the section offerings for a given semester can enroll in the course or not. (Currently it holds an `INT` value that will be translated via code.) 
+*Courses* can be assigned to multiple users, with their participation being dependent on their **role** (determined through linking tables). *Courses* have sections that represent individual offerings of various courses, e.g. two sections meeting at the same time but with two different professors, in person and online sections of the same course, etc. Thus, the *courses* table is the only non-linking table to have a composite primary key (`course_id` AND `section_id`). Most of the columns are self-explanatory, but I will note that the `enroll_status` column is meant to hold values of `OPEN`, `WAITLISTED`, or `CLOSED` to indicate whether students viewing the section offerings for a given semester can enroll in the course or not. (Currently it holds an `INT` value that will be translated via code.)
 
-Additionally, the Courses table uses a surrogate primary key, `class_id`. Previous, the `class_id` table did not exist and a composite primary key of `course_id` and `section_id`was used instead. The `class_id` column is artificial and is used for the purposes of auto-incrementation. There is now also a unique key for `course_id`, `section_id`, and `term`.
-
-| Class ID | Course ID | Section ID | Title      | Dept. | Campus | Term  | Days Offered       | Times         | Enroll Status | Credits |
-| -------- | --------- | ---------- | ---------- | ----- | ------ | ----- | ------------------ | ------------- | ------------- | ------- |
-| 74       | MATH-15   | 7294       | Statistics | Math  | Eureka | 2025F | Monday / Wednesday | 10:00 - 12:30 | OPEN          | 4.0     |
+| Course ID | Section ID | Title      | Dept. | Campus | Term  | Days Offered       | Times         | Enroll Status | Credits |
+| --------- | ---------- | ---------- | ----- | ------ | ----- | ------------------ | ------------- | ------------- | ------- |
+| MATH-15   | E7294      | Statistics | Math  | Eureka | 2025F | Monday / Wednesday | 10:00 - 12:30 | OPEN          | 4.0     |
 
 ## Users:
 Fairly self-explanatory. See **Roles** and beyond for more relevant details. 

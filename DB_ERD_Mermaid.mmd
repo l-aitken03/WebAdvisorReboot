@@ -1,8 +1,8 @@
-```mermaid
 erDiagram
     USER |o--|{ USER_ROLE_LINK : user_id
-    USER |o--|{ COURSE_USER_LINK : user_id
-    COURSE_USER_LINK }|--o| COURSE : class_id
+    USER |o--|{ USER_COURSE_LINK : user_id
+    USER_COURSE_LINK }|--o| COURSE : course_id
+    USER_COURSE_LINK }|--o| COURSE : section_id
     USER_ROLE_LINK }|--o| ROLE : role_id
     ROLE |o--|{ ROLE_PERMISSION_LINK : role_id
     ROLE_PERMISSION_LINK }|--o| PERMISSION : permission_id
@@ -24,19 +24,19 @@ erDiagram
 	boolean is_student
 	}
 	
-	COURSE_USER_LINK {
+	USER_COURSE_LINK {
 	int user_id PK,FK
-	int class_id PK,FK
+	int course_id PK,FK
+    int section_id PK,FK
 	}
 	
 	COURSE {
-	int class_id PK
-    varchar(10) course_id UK
-    int section_id UK
+    int course_id PK
+    int section_id PK
     varchar(30) name
     varchar(20) department
     varchar(10) campus
-    varchar(5) term UK
+    varchar(5) term
     varchar(30) days_offered
     varchar(20) times_offered
     varchar(10) availiability
@@ -95,4 +95,3 @@ erDiagram
 	int component_type
 
 	}
-```
