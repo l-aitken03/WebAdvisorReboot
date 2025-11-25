@@ -12,3 +12,21 @@ course_user_link = Table(
     Column('class_id', Integer, ForeignKey('course.class_id'), autoincrement=True, primary_key=True),
         Column('user_id', Integer, ForeignKey('user.user_id'), primary_key=True)
 )
+
+role_permission_link = Table(
+    'role_perm_link', db.Model.metadata,
+    Column('role_id', Integer, ForeignKey('Role.role_id'), primary_key=True),
+    Column('perm_id', Integer, ForeignKey('Permission.perm_id'), primary_key=True)
+)
+
+operation_permission_link = Table (
+    'oprn_perm_link', db.Model.metadata,
+    Column('op_id', Integer, ForeignKey('Operation.op_id'), primary_key=True),
+    Column('perm_id', Integer, ForeignKey('Permission.perm_id'), primary_key=True)
+)
+
+component_permission_link = Table (
+    'comp_perm_link', db.Model.metadata,
+    Column('comp_id', Integer, ForeignKey('Component.comp_id'), primary_key=True),
+    Column('perm_id', Integer, ForeignKey('Permission.perm_id'), primary_key=True)
+)
