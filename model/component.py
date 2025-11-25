@@ -3,8 +3,8 @@ from sqlalchemy.orm import relationship
 from model.base import db
 from model.associations import component_permission_link
 
-class Operation(db.Model):
-    __tablename__ = 'Operation'
+class Component(db.Model):
+    __tablename__ = 'Component'
 
     comp_id = Column(Integer, primary_key=True, nullable=False)
     comp_name = Column(String, nullable=False)
