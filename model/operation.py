@@ -4,7 +4,7 @@ from model.base import db
 from model.associations import operation_permission_link
 
 class Operation(db.Model):
-    __tablename__ = 'Operation'
+    __tablename__ = 'operation'
 
     op_id = Column(Integer, primary_key=True, nullable=False)
     op_route = Column(String, nullable=False)

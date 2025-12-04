@@ -4,7 +4,7 @@ from model.base import db
 from model.associations import component_permission_link
 
 class Component(db.Model):
-    __tablename__ = 'Component'
+    __tablename__ = 'component'
 
     comp_id = Column(Integer, primary_key=True, nullable=False)
     comp_name = Column(String, nullable=False)

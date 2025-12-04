@@ -8,7 +8,6 @@ class Permission(db.Model):
 
     perm_id = Column(Integer, primary_key=True, nullable=False)
     perm_name = Column(String, unique=True, nullable=False)
-    # perm_name is nullable and not unique in the SQLite version currently; this will be fixed when I regenerate the db.
 
     roles = relationship('Role', secondary=role_permission_link, back_populates='permissions')
     operations = relationship('Operation', secondary=operation_permission_link, back_populates='permissions')
