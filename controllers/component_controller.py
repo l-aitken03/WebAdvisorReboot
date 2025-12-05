@@ -1,7 +1,9 @@
 from flask import Blueprint, jsonify, make_response#, request
 from model.component import Component
 
-comp_bp = Blueprint('component', __name__, url_prefix='/comp')
+comp_bp = Blueprint('component', __name__,
+                    template_folder='templates',
+                    static_folder='static', url_prefix='/comp')
 # --- C[R]UD Operations [READ ONLY] ---
 
 # Read all components (GET)

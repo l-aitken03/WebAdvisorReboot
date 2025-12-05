@@ -2,7 +2,9 @@ from flask import Blueprint, request, jsonify, make_response
 from model.base import db
 from model.user import User
 
-user_bp = Blueprint('user', __name__, url_prefix='/user')
+user_bp = Blueprint('user', __name__,
+                    template_folder='templates',
+                    static_folder='static', url_prefix='/user')
 
 # --- CRUD Operations ---
 # Create a user (POST)

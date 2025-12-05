@@ -3,7 +3,9 @@ from model.base import db
 from model.role import Role
 from model.user import User
 
-role_bp = Blueprint('role', __name__, url_prefix='/role')
+role_bp = Blueprint('role', __name__,
+                    template_folder='templates',
+                    static_folder='static', url_prefix='/role')
 
 # --- C[R]UD Operations [READ ONLY] ---
 

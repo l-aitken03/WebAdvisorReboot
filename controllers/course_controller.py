@@ -2,7 +2,9 @@ from flask import Blueprint, request, jsonify, make_response
 from model.base import db
 from model.course import Course
 
-course_bp = Blueprint('course', __name__, url_prefix='/course')
+course_bp = Blueprint('course', __name__,
+                    template_folder='templates',
+                    static_folder='static', url_prefix='/course')
 
 # --- CRUD Operations ---
 # Create a course (POST)
