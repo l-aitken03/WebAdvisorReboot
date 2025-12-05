@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, make_response
 from model.role import Role
 
-role_bp = Blueprint('role', __name__, url_prefix='role')
+role_bp = Blueprint('role', __name__, url_prefix='/role')
 
 # --- C[R]UD Operations [READ ONLY] ---
 
