@@ -1,5 +1,7 @@
 from flask import Blueprint, jsonify, make_response
+from model.base import db
 from model.role import Role
+from model.user import User
 
 role_bp = Blueprint('role', __name__,
                     template_folder='templates',
@@ -18,3 +20,14 @@ def get_roles():
 def get_role(role_id):
     role = Role.query.get_or_404(role_id)
     return make_response(jsonify({'role': role.json()}), 200)
+
+# Add a user by username to a role by id
+@role_bp.route('/<int:role_id>/add/<username>', methods=['GET'])
+def add_user_to_role(username, role_id):
+    user = User.query.filter_by(user_username=username).first()
+    role = Role.query.filter_by(role_id=role_id).first()
+    user.roles.append(role)
+    db.session.add(user)
+    db.session.commit()
+
+    return make_response(jsonify({'r': role_id, 'un': username}))
