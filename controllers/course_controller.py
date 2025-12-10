@@ -1,11 +1,9 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, render_template
 from model.base import db
 from model.course import Course
 # from model.user import User
 
-course_bp = Blueprint('course', __name__,
-                    template_folder='templates',
-                    static_folder='static', url_prefix='/course')
+course_bp = Blueprint('course', __name__, url_prefix='/course')
 
 # --- CRUD Operations ---
 # Create a course (POST)
@@ -32,7 +30,8 @@ def create_course():
 @course_bp.route('/all', methods=['GET'])
 def get_courses():
     courses = Course.query.all()
-    return make_response(jsonify([course.json() for course in courses]), 200)
+    return render_template('course/list.html', courses=[course for course in courses])
+    # return make_response(jsonify([course.json() for course in courses]), 200)
 
 # Read a single course by ID (GET)
 @course_bp.route('/<int:class_id>', methods=['GET'])

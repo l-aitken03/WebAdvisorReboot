@@ -117,8 +117,8 @@
       .widgets{grid-template-columns:1fr}
     }
 
-    /* Adding List Table CSS */
-    .user-list-container {
+/* Adding List Table CSS */
+.model-list-container {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -127,8 +127,8 @@
     overflow: hidden;
 }
 
-/* Use CSS Grid on every 'user-item' (both header and data rows) */
-.user-item {
+/* Use CSS Grid on every 'model-item' (both header and data rows) */
+.model-item {
     display: grid;
     /* Define columns for ID, Username, Full Name, Email */
     grid-template-columns: 50px 150px 1fr 2fr;
@@ -157,5 +157,5 @@
 }
 
 /* Style individual data cells (optional, just for clarity) */
-.user-id { font-weight: bold; }
-.user-email { color: #007BFF; }
+.model-id { font-weight: bold; }
+.model-email { color: #007BFF; }

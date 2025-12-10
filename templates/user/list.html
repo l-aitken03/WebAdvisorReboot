@@ -4,11 +4,11 @@
 
 {% block content %}
 {% for user in users -%}
-<div class="user-item data-row">
-  <div class="user-id">{{ user.user_id }}</div>
-  <div class="user-name">{{ user.user_username }}</div>
-  <div class="user-full-name">{{ user.user_first_name }} {{ user.user_last_name }}</div>
-  <div class="user-email">{{ user.user_email }}</div>
+<div class="model-item data-row">
+  <div class="model-id">{{ user.user_id }}</div>
+  <div class="model-name">{{ user.user_username }}</div>
+  <div class="model-full-name">{{ user.user_first_name }} {{ user.user_last_name }}</div>
+  <div class="model-email">{{ user.user_email }}</div>
 </div>
 {% endfor -%}
 {% endblock %}

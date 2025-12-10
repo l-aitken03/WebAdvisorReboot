@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block title %}List All Courses{% endblock %}
+
+{% block content %}
+{% for course in courses -%}
+<div class="model-item data-row">
+  <div class="model-id">{{ course.class_id }}</div>
+  <div class="model-id">{{ course.course_id }}</div>
+  <div class="model-name">{{ course.course_title }}</div>
+  <div class="model-full-name">{{ course.days_offered }} {{ course.user_last_name }}</div>
+  <div class="model-email">{{ course.times_offered }}</div>
+</div>
+{% endfor -%}
+{% endblock %}
