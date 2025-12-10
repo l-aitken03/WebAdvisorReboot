@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from model.base import db
 from controllers.user_controller import user_bp
 from controllers.role_controller import role_bp
@@ -28,7 +28,8 @@ def create_tables():
 
 @app.route('/')
 def index():
-    return "Main application index"
+    return render_template('layout.html')
+    #return "WebAdvisor Main Application Index"
 
 if __name__ == '__main__':
     with app.app_context():

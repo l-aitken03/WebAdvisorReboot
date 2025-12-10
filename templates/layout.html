@@ -1,76 +1,88 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>{% block title %}WebAdvisorReboot — Dashboard{% endblock %}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{% block title %}WebAdvisorReboot — Dashboard{% endblock %}</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <!-- Add the <link> below to any future pages, and they'll all look the same! -->
-  <link rel="stylesheet" href="../static/style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Add the <link> below to any future pages, and they'll all look the same! -->
+    <link rel="stylesheet" href="../static/style.css"/>
 </head>
+
 <body>
-  <main class="wrap" role="main">
+<main class="wrap" role="main">
+
     <!-- left column -->
     <aside class="panel" aria-label="Sidebar">
-      <div class="brand" role="banner">
+        <div class="brand" role="banner">
         <div class="logo" aria-hidden="true">RW</div>
         <div>
-          <h1>Redwoods WebAdvisor</h1>
-          <p>Student / Faculty Portal</p>
+            <h1>Redwoods WebAdvisor</h1>
+            <p>Student / Faculty Portal</p>
         </div>
-      </div>
+        </div>
 
-      <form class="login" action="#" method="post" aria-labelledby="login-heading" onsubmit="event.preventDefault(); alert('This is a demo template.');">
+    <form class="login" action="#" method="post" aria-labelledby="login-heading" onsubmit="event.preventDefault(); alert('This is a demo template.');">
         <h2 id="login-heading" style="font-size:13px;margin:8px 0;color:var(--muted)">Sign in</h2>
 
         <div class="field">
-          <label for="user">Username</label>
-          <input id="user" name="username" type="text" autocomplete="username" required>
+            <label for="user">Username</label>
+            <input id="user" name="username" type="text" autocomplete="username" required>
         </div>
 
         <div class="field">
-          <label for="pass">Password</label>
-          <input id="pass" name="password" type="password" autocomplete="current-password" required>
+            <label for="pass">Password</label>
+            <input id="pass" name="password" type="password" autocomplete="current-password" required>
         </div>
 
         <div style="display:flex;gap:10px">
-          <button class="btn" type="submit">Sign In</button>
-          <button class="btn secondary" type="button" onclick="alert('Help / Forgot password')">Help</button>
+            <button class="btn" type="submit">Sign In</button>
+            <button class="btn secondary" type="button" onclick="alert('Help / Forgot password')">Help</button>
         </div>
-      </form>
+    </form>
 
-      <nav class="quick-links" aria-label="Quick links">
+    <nav class="quick-links" aria-label="Quick links">
+        <a class="link-item" href="/ " title="Go to homepage">
+            🏠 <span>Home</span>
+        </a>
         <a class="link-item" href="#" title="Register for classes">
-          📋 <span>Register / Add Classes</span>
+            📋 <span>Register / Add Classes</span>
         </a>
         <a class="link-item" href="#" title="View class schedule">
-          🗓️ <span>My Class Schedule</span>
+            🗓️ <span>My Class Schedule</span>
         </a>
         <a class="link-item" href="#" title="View grades">
-          🏷️ <span>View Grades</span>
+            🏷️ <span>View Grades</span>
         </a>
         <a class="link-item" href="#" title="Account info">
-          💳 <span>Student Account</span>
+            💳 <span>Student Account</span>
         </a>
-          <a class="link-item" href="/user/2" title="Account info">
-              👤 <span>Edit Profile</span>
-          </a>
-      </nav>
+        <a class="link-item" href="/user/2" title="Edit your profile">
+            👤 <span>Edit Profile</span>
+        </a>
+    </nav>
+
+    <div class="searchbar" role="search" aria-label="Site search">
+        <input type="search" placeholder="Search courses, schedules, help..." aria-label="Search">
+        <button class="btn" type="button" onclick="alert('Search demo')">Search</button>
+    </div>
     </aside>
 
     <!-- right column -->
     <section class="content" aria-label="Main content">
+      <!--
       <div class="searchbar" role="search" aria-label="Site search">
         <input type="search" placeholder="Search courses, schedules, help..." aria-label="Search">
         <button class="btn" type="button" onclick="alert('Search demo')">Search</button>
       </div>
+      -->
 
       {% block content %}
       <!-- Default content goes here if nothing specific is provided -->
       <p>Please select an option from the navigation.</p>
-      {% endblock %}
 
       <section class="card" aria-labelledby="help-head">
         <h2 id="help-head">Helpful links</h2>
@@ -81,7 +93,7 @@
           <a class="link-item" href="#" style="border:1px solid #f1f5fb;padding:10px;border-radius:10px">Transcripts</a>
         </div>
       </section>
-
+      {% endblock %}
       <footer class="footer" role="contentinfo">
         © <span id="year"></span> College of the Redwoods · <a href="#" style="color:inherit;text-decoration:underline">Privacy</a> · <a href="#" style="color:inherit;text-decoration:underline">Accessibility</a> · <a href="#" style="color:inherit;text-decoration:underline">Report a bug or issue</a>
       </footer>

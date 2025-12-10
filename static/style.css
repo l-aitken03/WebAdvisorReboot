@@ -89,7 +89,7 @@
       box-shadow:none;font-weight:600;
     }
 
-    .quick-links{margin-top:18px;display:grid;gap:8px}
+    .quick-links{margin-top:18px;display:grid;gap:8px;position:left}
     .link-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:8px;
       text-decoration:none;color:inherit;border:1px dashed transparent;}
     .link-item:hover{background:#fbfdff;border-color:#eef6ff}
