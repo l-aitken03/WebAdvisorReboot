@@ -1,4 +1,4 @@
-{% extends 'layout_ai.html' %}
+{% extends 'layout_ai_v2.html' %}
 
 {% block title %}List of Courses{% endblock %}
 
@@ -7,20 +7,24 @@
 <div class="model-list-container">
 
   <!-- Header -->
-  <div class="model-item header-row">
-    <div>Class ID</div>
+  <div class="model-item course header-row">
     <div>Course ID</div>
-    <div>Title</div>
-    <div>Schedule</div>
+    <div>Section ID</div>
+    <div>Course Title</div>
+    <div>Scheduled Meetings</div>
+    <div>Status</div>
+    <div>Units</div>
   </div>
 
   <!-- Rows -->
   {% for course in courses %}
-  <div class="model-item data-row">
-    <div>{{ course.class_id }}</div>
+  <div class="model-item course data-row">
     <div>{{ course.course_id }}</div>
+    <div>{{ course.campus[:1] }}{{ course.section_id }}</div>
     <div>{{ course.course_title }}</div>
-    <div>{{ course.days_offered }} – {{ course.times_offered }}</div>
+    <div>{{ course.days_offered }} {{ course.times_offered }}</div>
+    <div>{{ course.enroll_status_label() }}</div>
+    <div>{{ course.credits }}</div>
   </div>
   {% endfor %}
 

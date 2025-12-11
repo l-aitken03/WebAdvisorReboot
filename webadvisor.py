@@ -28,7 +28,7 @@ def create_tables():
 
 @app.route('/')
 def index():
-    return render_template('layout_ai.html')
+    return render_template('layout_ai_v2.html')
     #return "WebAdvisor Main Application Index"
 
 if __name__ == '__main__':

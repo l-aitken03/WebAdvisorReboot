@@ -1,12 +1,25 @@
-{% extends 'layout.html' %}
+{% extends 'layout_ai_v2.html' %}
 
-{% block title %}List All Roles{% endblock %}
+{% block title %}List of Roles{% endblock %}
 
 {% block content %}
-{% for role in roles -%}
-<div class="model-item data-row">
-  <div class="model-id">{{ role.role_id }}</div>
-  <div class="model-name">{{ role.role_name }}</div>
+
+<div class="model-list-container">
+
+  <!-- Header Row -->
+  <div class="model-item role header-row">
+    <div>Role ID</div>
+    <div>Role Name</div>
+  </div>
+
+  <!-- Data Rows -->
+  {% for role in roles %}
+  <div class="model-item role data-row">
+    <div>{{ role.role_id }}</div>
+    <div>{{ role.role_name }}</div>
+  </div>
+  {% endfor %}
+
 </div>
-{% endfor -%}
+
 {% endblock %}
