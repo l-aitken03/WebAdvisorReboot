@@ -1,62 +1,72 @@
-// Function to convert FormData into a JSON object
-function formToJson(form) {
+(function () {
+  /** Convert form fields into a plain JS object */
+  function formToJson(form) {
+    const data = {};
     const formData = new FormData(form);
-    const dataObject = {};
 
-    formData.forEach((value, key) => {
-        if (form.elements[key].type === 'checkbox') {
-            dataObject[key] = form.elements[key].checked;
-        } else {
-            dataObject[key] = value;
-        }
-    });
-    return dataObject;
+    for (const [key, value] of formData.entries()) {
+      const field = form.elements.namedItem(key);
+
+      if (!field) continue; // Defensive: skip unexpected keys
+      data[key] = field.type === 'checkbox' ? field.checked : value;
     }
 
-function handleSaveClick() {
+    return data;
+  }
+
+  /** Submit PUT request with JSON body */
+  async function updateUser(endpoint, payload) {
+    const response = await fetch(endpoint, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error ${response.status}`);
+    }
+    return response.json();
+  }
+
+  /** Main handler for Save button */
+  async function handleSave(event) {
+    event.preventDefault(); // Prevent accidental form submission if button is inside <form>
+
     const form = document.getElementById('profileForm');
-    const formDataJson = formToJson(form); // Pass the form element to the function
-    const userId = formDataJson.id;
+    if (!form) {
+      console.error("profileForm not found.");
+      return alert("Internal error: form missing.");
+    }
+
+    const data = formToJson(form);
+    const userId = data.id;
 
     if (!userId) {
-        console.error("User ID is missing. Cannot perform PUT request.");
-        alert("Error: User ID is missing.");
-        return;
+      console.error("User ID is missing.");
+      return alert("Error: User ID is missing.");
     }
 
-    const endpointUrl = `/user/${userId}`;
-    console.log("Data to be submitted:", formDataJson);
+    try {
+      console.log("Submitting JSON:", data);
 
-    fetch(endpointUrl, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formDataJson)
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Success:', data);
-        alert('Profile updated successfully!');
-    })
-    .catch((error) => {
-        console.error('Error during PUT request:', error);
-        alert('Failed to update profile. Check the console for details.');
-    });
-}
+      const result = await updateUser(`/user/${userId}`, data);
 
-// This ensures the DOM is fully loaded before trying to find the button
-document.addEventListener('DOMContentLoaded', (event) => {
-    const saveButton = document.getElementById('saveButton');
-    if (saveButton) {
-        saveButton.addEventListener('click', handleSaveClick);
-        console.log('Event listener attached to saveButton.');
+      console.log("Success:", result);
+      alert("Profile updated successfully!");
+    } catch (err) {
+      console.error("Failed to update profile:", err);
+      alert("Failed to update profile. See console for details.");
+    }
+  }
+
+  /** Attach button handler on DOM ready */
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('saveButton');
+    if (btn) {
+      btn.addEventListener('click', handleSave);
+      console.log("Save button initialized.");
     } else {
-        console.error('saveButton element not found!');
+      console.error("saveButton not found!");
     }
-});
+  });
+})();

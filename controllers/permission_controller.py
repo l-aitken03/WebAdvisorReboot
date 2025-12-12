@@ -2,9 +2,7 @@ from flask import Blueprint, jsonify, make_response#, request
 from model.base import db
 from model.permission import Permission
 
-perm_bp = Blueprint('permission', __name__,
-                    template_folder='templates',
-                    static_folder='static', url_prefix='/perm')
+perm_bp = Blueprint('permission', __name__, url_prefix='/perm')
 
 # --- C[R]UD Operations [READ ONLY] ---
 

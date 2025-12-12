@@ -10,9 +10,6 @@ user_bp = Blueprint('user', __name__, url_prefix='/user')
 def create_user():
     data = request.get_json()
     new_user = User(
-                    # User ID is required while we are using SQLite
-                    # because AUTO_INCREMENT is not supported in SQLite.
-                    # We will need to remove this when switching to MySQL.
                     user_id=data.get('user_id', None),
                     user_username=data.get('username', None),
                     user_first_name=data.get('first_name', None),

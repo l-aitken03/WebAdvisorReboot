@@ -7,19 +7,31 @@ webadvisorreboot/
 ├── model/
 |
 ├── static/
-|   ├── logo.png
+|   ├── favicon.ico
 |   ├── style.css
-|   └── generic.js
+|   ├── save_profile.js
+|   └── darkmode.js
 |
 ├── templates/
-|   ├── login.html
+    ├── course/
+    |   ├── list_all.html
+    |   └── register.html
+    |
+    ├── role/
+    |   └── list_all.html
+    |
+    ├── user/
+    |   ├── list_all.html
+    |   └── profile.html
+    |
 |   ├── forgot_password.html
-|   ├── signup.html
-|   ├── register.html
-|   ├── index.html
+|   ├── layout.html
 |   ├── course_list.html
-|   └── course_view.html
+|   └── 404.html
 |
+├── tools/
+|
+├── .gitignore
 ├── webadvisor.py
 ├── SQLite_DB.sqlite
 |

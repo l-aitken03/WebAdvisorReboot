@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{% block title %}WebAdvisorReboot — Dashboard{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="../../static/depreciated/style_ai_v1.css"/>
+</head>
+
+<!-- Initialize Dark Mode Toggle -->
+<script src="../../static/depreciated/darkmode_old.js" type="text/javascript">
+
+</script>
+
+<body>
+<main class="wrap" role="main">
+
+    <!-- left column -->
+    <aside class="panel" aria-label="Sidebar">
+        <div class="brand" role="banner">
+        <div class="logo" aria-hidden="true">RW</div>
+        <div>
+            <h1>Redwoods WebAdvisor</h1>
+            <p>Student / Faculty Portal</p>
+        </div>
+        </div>
+
+    <form class="login" action="#" method="post" aria-labelledby="login-heading" onsubmit="event.preventDefault(); alert('This is a demo template.');">
+        <h2 id="login-heading" style="font-size:13px;margin:8px 0;color:var(--muted)">Sign in</h2>
+
+        <div class="field">
+            <label for="user">Username</label>
+            <input id="user" name="username" type="text" autocomplete="username" required>
+        </div>
+
+        <div class="field">
+            <label for="pass">Password</label>
+            <input id="pass" name="password" type="password" autocomplete="current-password" required>
+        </div>
+
+        <div style="display:flex;gap:10px">
+            <button class="btn" type="submit">Sign In</button>
+            <button class="btn secondary" type="button" onclick="alert('Help / Forgot password')">Help</button>
+        </div>
+    </form>
+
+    <nav class="quick-links" aria-label="Quick links">
+        <a class="link-item" href="/static " title="Go to homepage">
+            🏠 <span>Home</span>
+        </a>
+        <a class="link-item" href="#" title="Register for classes">
+            📋 <span>Register / Add Classes</span>
+        </a>
+        <a class="link-item" href="#" title="View class schedule">
+            🗓️ <span>My Class Schedule</span>
+        </a>
+        <a class="link-item" href="#" title="View grades">
+            🏷️ <span>View Grades</span>
+        </a>
+        <a class="link-item" href="#" title="Account info">
+            💳 <span>Student Account</span>
+        </a>
+        <a class="link-item" href="/user/2" title="Edit your profile">
+            👤 <span>Edit Profile</span>
+        </a>
+    </nav>
+
+    <div class="searchbar" role="search" aria-label="Site search">
+        <input type="search" placeholder="Search courses, schedules, help..." aria-label="Search">
+        <button class="btn" type="button" onclick="alert('Search demo')">Search</button>
+    </div>
+
+    <button id="theme-toggle" class="btn secondary" type="button" style="margin-top:10px;">
+        Toggle Dark Mode
+    </button>
+
+    </aside>
+
+    <!-- right column -->
+    <section class="content" aria-label="Main content">
+      <!--
+      <div class="searchbar" role="search" aria-label="Site search">
+        <input type="search" placeholder="Search courses, schedules, help..." aria-label="Search">
+        <button class="btn" type="button" onclick="alert('Search demo')">Search</button>
+      </div>
+      -->
+
+      {% block content %}
+      <!-- Default content goes here if nothing specific is provided -->
+      <p>Please select an option from the navigation.</p>
+
+      <section class="card" aria-labelledby="help-head">
+        <h2 id="help-head">Helpful links</h2>
+        <p style="margin-top:8px;color:var(--muted)">Find support for registration, financial aid, transcripts, and more.</p>
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+          <a class="link-item" href="#" style="border:1px solid #f1f5fb;padding:10px;border-radius:10px">Registration</a>
+          <a class="link-item" href="#" style="border:1px solid #f1f5fb;padding:10px;border-radius:10px">Financial Aid</a>
+          <a class="link-item" href="#" style="border:1px solid #f1f5fb;padding:10px;border-radius:10px">Transcripts</a>
+        </div>
+      </section>
+      {% endblock %}
+      <footer class="footer" role="contentinfo">
+          © <span id="year"></span> College of the Redwoods · <a href="#" style="color:inherit;text-decoration:underline">Privacy</a> · <a href="#" style="color:inherit;text-decoration:underline">Accessibility</a> · <a href="#" style="color:inherit;text-decoration:underline">Report a bug or issue</a>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    // small enhancements
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // keyboard accessibility: press Enter on quick links to simulate click
+    document.querySelectorAll('.link-item').forEach(el => {
+      el.setAttribute('tabindex','0');
+      el.addEventListener('keypress', e => { if(e.key === 'Enter') el.click(); });
+    });
+  </script>
+</body>
+</html>

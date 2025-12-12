@@ -1,15 +1,34 @@
 {% extends 'layout.html' %}
 
-{% block title %}List All Courses{% endblock %}
+{% block title %}List of Courses{% endblock %}
 
 {% block content %}
-{% for course in courses -%}
-<div class="model-item data-row">
-  <div class="model-id">{{ course.class_id }}</div>
-  <div class="model-id">{{ course.course_id }}</div>
-  <div class="model-name">{{ course.course_title }}</div>
-  <div class="model-full-name">{{ course.days_offered }} {{ course.user_last_name }}</div>
-  <div class="model-email">{{ course.times_offered }}</div>
+
+<h1>List of All Courses</h1>
+
+<div class="model-list-container">
+
+  <!-- Header -->
+  <div class="model-item course header-row">
+    <div>Course ID</div>
+    <div>Section ID</div>
+    <div>Course Title</div>
+    <div>Scheduled Meetings</div>
+    <div>Status</div>
+    <div>Units</div>
+  </div>
+
+  <!-- Rows -->
+  {% for course in courses %}
+  <div class="model-item course data-row">
+    <div>{{ course.course_id }}</div>
+    <div>{{ course.campus[:1] }}{{ course.section_id }}</div>
+    <div>{{ course.course_title }}</div>
+    <div>{{ course.days_offered }} {{ course.times_offered }}</div>
+    <div>{{ course.enroll_status_label() }}</div>
+    <div>{{ course.credits }}</div>
+  </div>
+  {% endfor %}
+
 </div>
-{% endfor -%}
 {% endblock %}
