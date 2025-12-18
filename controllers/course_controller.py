@@ -10,30 +10,17 @@ course_bp = Blueprint('course', __name__, url_prefix='/course')
 @course_bp.route('/create', methods=['POST'])
 def create_course():
     data = request.get_json()
-
-    _class_id = data.get('class_id', None)
-    _course_id = data.get('course_id', None)
-    _section_id = data.get('section_id', None)
-    _course_title = data.get('course_title', None)
-    _department = data.get('department', None)
-    _campus = data.get('campus', None)
-    _term = data.get('term', None)
-    _days_offered = data.get('days_offered', None)
-    _times_offered = data.get('times_offered', None)
-    _enroll_status = data.get('enroll_status', None)
-    _credits = data.get('credits', None)
-
-    new_course = Course(class_id=_class_id,
-                        course_id=_course_id,
-                        section_id=_section_id,
-                        course_title=_section_id,
-                        department=_department,
-                        campus=_campus,
-                        term=_term,
-                        days_offered=_days_offered,
-                        times_offered=_times_offered,
-                        enroll_status=_enroll_status,
-                        credits=_credits,
+    new_course = Course(class_id=data.get('class_id', None),
+                        course_id=data.get('course_id', None),
+                        section_id=data.get('section_id', None),
+                        course_title=data.get('course_title', None),
+                        department=data.get('department', None),
+                        campus=data.get('campus', None),
+                        term=data.get('term', None),
+                        days_offered=data.get('days_offered', None),
+                        times_offered=data.get('times_offered', None),
+                        enroll_status=data.get('enroll_status', None),
+                        credits=data.get('credits', None),
                         )
     db.session.add(new_course)
     db.session.commit()
