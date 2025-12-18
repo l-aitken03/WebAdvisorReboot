@@ -34,10 +34,11 @@ def get_courses():
     # return make_response(jsonify([course.json() for course in courses]), 200)
 
 # Read a single course by ID (GET)
-@course_bp.route('/<int:class_id>', methods=['GET'])
-def get_course(class_id):
-    course = Course.query.get_or_404(class_id)
-    return make_response(jsonify({'course': course.json()}), 200)
+@course_bp.route('/register', methods=['GET'])
+def get_course():
+    courses = Course.query.all()
+    return render_template(template_name_or_list='course/register.html', courses=[course for course in courses])
+    #return make_response(jsonify({'course': course.json()}), 200)
 
 # Update a course by ID (PUT/PATCH)
 @course_bp.route('/<int:class_id>', methods=['PUT'])
