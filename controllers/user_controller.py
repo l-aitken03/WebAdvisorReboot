@@ -9,14 +9,23 @@ user_bp = Blueprint('user', __name__, url_prefix='/user')
 @user_bp.route('/create', methods=['POST'])
 def create_user():
     data = request.get_json()
+
+    _uid = data.get('user_id', None)
+    _username = data.get('username', None)
+    _first_name = data.get('first_name', None)
+    _last_name = data.get('last_name', None)
+    _email = data.get('email', None)
+    _is_professor = data.get('prof', False)
+    _is_student = data.get('student', True)
+
     new_user = User(
-                    user_id=data.get('user_id', None),
-                    user_username=data.get('username', None),
-                    user_first_name=data.get('first_name', None),
-                    user_last_name=data.get('last_name', None),
-                    user_email=data.get('email', None),
-                    is_prof=data.get('prof', False),
-                    is_student=data.get('student', True),
+                    user_id= _uid,
+                    user_username=_username,
+                    user_first_name=_first_name,
+                    user_last_name=_last_name,
+                    user_email=_email,
+                    is_prof=_is_professor,
+                    is_student=_is_student,
                     )
     db.session.add(new_user)
     db.session.commit()
